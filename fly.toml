@@ -1,0 +1,45 @@
+# fly.toml app configuration file generated for arunpaneru-portfolio on 2025-12-05T09:46:14Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'arunpaneru-portfolio'
+primary_region = 'sin'
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  HOST = "0.0.0.0"
+  PORT = "2222"
+  # Set to "true" if you want debug logs
+  # DEBUG = "false"
+
+[mounts]
+  source = "data"
+  destination = "/data"
+  initial_size = "1gb"
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 2222
+  auto_stop_machines = false      # Don't auto-stop the machine
+  auto_start_machines = true      # Auto-start on traffic (if stopped)
+  min_machines_running = 1        # Keep at least 1 machine running always
+
+  [[services.ports]]
+    port = 22
+    handlers = []
+
+  # Health check for SSH service
+  [[services.tcp_checks]]
+    interval = "15s"
+    timeout = "5s"
+    grace_period = "10s"
+    restart_limit = 0
+
+# Resource allocation
+[vm]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256

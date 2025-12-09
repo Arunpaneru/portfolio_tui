@@ -1,11 +1,11 @@
 # Arun Paneru — Full-Stack Developer
 
-Passionate about building production-grade applications with Go, TypeScript,  
-React, PostgreSQL, Docker, and cloud-native tools.
+Dedicated to designing and delivering scalable, production-ready systems using  
+Go, TypeScript, React, PostgreSQL, Docker, and modern cloud infrastructure.
 
-## What I Focus On
+## Professional Focus Areas
 
-- Backend development
-- REST API design
-- Database architecture
-- Terminal UI tools
+- Backend engineering and system design
+- API architecture and integration
+- Database modeling and performance optimization
+- Terminal-based developer tools and automation

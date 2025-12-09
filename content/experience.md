@@ -1,57 +1,18 @@
 # Experience
 
-## Senior Software Engineer
-
-**Company Name** — _Location (Remote/On-site)_  
-**MM YYYY – Present**
-
-- Designed and developed scalable backend services using Node.js and TypeScript.
-- Led the end-to-end delivery of complex features from design to deployment.
-- Improved system reliability by identifying anti-patterns and refactoring legacy code.
-- Collaborated with cross-functional teams to define requirements and ensure engineering best practices.
-- Optimized database queries and schema design for significant performance gains.
-- Mentored junior engineers through code reviews and technical guidance.
-
----
-
 ## Software Engineer
 
-**Company Name** — _Location (Remote/On-site)_  
-**MM YYYY – MM YYYY**
+**CodeDrops Tech** — _Location (Hybrid)_  
+**Aug2023 – Present**
 
-- Built user-facing features and internal tools using modern JavaScript/TypeScript.
-- Implemented secure authentication, authorization, and validation flows.
-- Integrated third-party APIs (payments, notifications, LLMs) with robust error-handling patterns.
-- Improved CI/CD pipelines for faster and safer deployments.
-- Translated product requirements into technical designs while maintaining code quality.
-
----
-
-## Backend Developer
-
-**Company Name** — _Location (Remote/On-site)_  
-**MM YYYY – MM YYYY**
-
-- Developed backend microservices with Node.js, Express/NestJS, and SQL/NoSQL databases.
-- Implemented caching, pagination, and performance improvements for high-traffic systems.
-- Wrote unit and integration tests while maintaining API documentation.
-- Contributed to architectural decisions and evolving system design.
+- Architected and developed a suite of REST, WebSocket, and GraphQL APIs, utilizing RabbitMQ for asynchronous message processing and Redis for efficient caching to enhance  
+  application performance and scalability.
+- Led a team of five backend developers and interns, overseeing project lifecycles, conducting code reviews, and providing mentorship to foster professional growth.
+- Managed the full product development process in an Agile environment, collaborating directly with product owners to align technical solutions with business objectives.
+- Engineered and maintained automated CI/CD pipelines using GitHub Actions, resulting in streamlined deployment processes and reduced manual effort.
+- Managed cloud infrastructure on AWS (EC2, S3) and VPS while leveraging Docker for containerization to optimize application deployment and performance.
+- Integrated critical third-party APIs, including Stripe, OpenAI, and Twilio, to enable robust payment, communication, and AI-driven functionalities.
 
 ---
 
-# Key Achievements
 
-- Delivered multiple large-scale features impacting thousands of users.
-- Reduced API latency by X% through refactoring and database optimization.
-- Established standardized coding patterns improving onboarding and reducing bugs.
-- Built internal developer tools that enhanced team productivity.
-
----
-
-# Technologies Used
-
-- **Languages:** TypeScript, JavaScript, Go (optional)
-- **Frameworks:** Node.js, Express, NestJS, React, Bubbletea, Lipgloss
-- **Databases:** PostgreSQL, MongoDB, Redis
-- **DevOps & Tools:** Docker, GitHub Actions, CI/CD, AWS/GCP/Supabase
-- **Other:** Zod, Prisma, REST, GraphQL, WebSockets, LLM APIs (GPT, Gemini, Llama)

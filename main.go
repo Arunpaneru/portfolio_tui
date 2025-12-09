@@ -1,8 +1,5 @@
 package main
 
-// An example Bubble Tea server. This will put an ssh session into alt screen
-// and continually print up to date terminal information.
-
 import (
 	"context"
 	"errors"
@@ -25,6 +22,7 @@ import (
 	"github.com/charmbracelet/wish/activeterm"
 	"github.com/charmbracelet/wish/bubbletea"
 	"github.com/charmbracelet/wish/logging"
+	"github.com/muesli/termenv"
 )
 
 const (
@@ -94,6 +92,10 @@ func (ct *connectionTracker) removeConnection() {
 
 var connTracker = newConnectionTracker()
 
+func init() {
+	lipgloss.SetColorProfile(termenv.ColorProfile())
+}
+
 func main() {
 	host := os.Getenv("HOST")
 	if host == "" {
@@ -108,7 +110,6 @@ func main() {
 		log.Fatal("Content directory not found", "error", err)
 	}
 
-	// Set log level based on environment
 	logLevel := log.InfoLevel
 	if os.Getenv("DEBUG") == "true" {
 		logLevel = log.DebugLevel
@@ -199,6 +200,10 @@ func teaHandler(s ssh.Session) (tea.Model, []tea.ProgramOption) {
 			"ip", getClientIP(s),
 			"size", fmt.Sprintf("%dx%d", pty.Window.Width, pty.Window.Height))
 	}
+	renderer := bubbletea.MakeRenderer(s)
+	lipgloss.SetColorProfile(renderer.ColorProfile())
+
+	darkBg := renderer.HasDarkBackground()
 
 	m := initializeModel()
 
@@ -207,20 +212,17 @@ func teaHandler(s ssh.Session) (tea.Model, []tea.ProgramOption) {
 		"user", s.User(),
 		"remote", s.RemoteAddr().String(),
 		"term", pty.Term,
-		"size", fmt.Sprintf("%dx%d", pty.Window.Width, pty.Window.Height))
-
-	renderer := bubbletea.MakeRenderer(s)
+		"size", fmt.Sprintf("%dx%d", pty.Window.Width, pty.Window.Height),
+		"colors", renderer.ColorProfile())
 
 	bg := "light"
-	if renderer.HasDarkBackground() {
+	if darkBg {
 		bg = "dark"
 	}
 	_ = bg
-
 	return m, []tea.ProgramOption{tea.WithAltScreen(), tea.WithMouseCellMotion()}
 }
 
-// Just a generic tea.Model to demo terminal information of ssh.
 const SidebarWidth = 34
 
 type FocusArea int
@@ -354,7 +356,7 @@ func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			mainHeight = 3
 		}
 
-		// Account for mainStyle border and padding (border: 1 char each side = 2, padding: 1 char each side = 2)
+		// Account for mainStyle border and padding 
 		viewportWidth := mainWidth - 4
 		viewportHeight := mainHeight - 2
 		if viewportWidth < 6 {
@@ -477,7 +479,6 @@ func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				if m.projectCursor >= 0 && m.projectCursor < len(projects) {
 					m.showURLPopup = true
 					m.selectedURL = projects[m.projectCursor].Link
-					// openBrowser(projects[m.projectCursor].Link)
 				}
 				return m, nil
 			case "pgdown", "pagedown":
